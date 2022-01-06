@@ -1,0 +1,19 @@
+.navbar{
+    background-color: var(--bg-color);
+}
+
+.navbarLinks{
+    max-width: 65rem;
+    display: flex;
+    padding: 15px 6px;
+    list-style: none;
+    justify-content: space-between;
+    margin-inline: auto;
+    align-items: center;
+}
+
+.logo{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color : var(--text-primary)
+}

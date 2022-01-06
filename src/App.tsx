@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+import styles from "./App.module.css";
+import { Navbar, Sidebar } from "./components";
+import AppProvider from "./context";
+import { AllBanks, Bank, Favorite } from "./views";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppProvider>
+      <Router>
+        <Navbar />
+        <div className={styles.wrapper}>
+          <Sidebar />
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/allbanks" />
+            </Route>
+            <Route exact path="/allbanks" component={AllBanks} />
+            <Route exact path="/bankdetails/:ifsc" component={Bank} />
+            <Route exact path="/favorites" component={Favorite} />
+          </Switch>
+        </div>
+      </Router>
+    </AppProvider>
   );
 }
 
