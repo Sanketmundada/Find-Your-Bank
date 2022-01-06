@@ -1,5 +1,11 @@
 export const BASE_URL = "https://vast-shore-74260.herokuapp.com/banks?city=";
 
+export const FILTER_OPTIONS = [
+  { label: "Bank Name", value: "bank_name" },
+  { label: "IFSC", value: "ifsc" },
+  { label: "Branch", value: "branch" },
+];
+
 export const SIDEBAR_LINKS = [
   {
     name: "All Banks",
@@ -30,6 +36,6 @@ export const CITY_LIST = [
   },
   {
     label: "Chennai",
-    value: "Chennai",
+    value: "CHENNAI",
   },
 ];
