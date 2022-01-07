@@ -1,3 +1,22 @@
 .sidebar{
-    background-color: dodgerblue;
+    min-width: max-content;
+    padding: 0 10px;
+}
+.navDivs{
+    padding: 8px 5px;
+    margin: 5px 0;
+}
+
+.navDivs:hover{
+}
+
+.navLinks{
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.navLinks > p{
+    margin-left: 4px;
 }

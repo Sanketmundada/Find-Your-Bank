@@ -10,20 +10,22 @@
   box-sizing: border-box;
 }
 :root{
-  --bg-color:hsl(0, 0%, 100%);
+  --bg-color:#ffffff;
   --text-primary : #424242;
+  --text-secondary : #757575;
 
 }
 
 .dark{
   --bg-color : #0d192b;
+  --card-bg-color : hsl(216, 50%, 16%);
   --text-primary : #ffffff;
-
+  --text-secondary :  #8bacda;
 
   --shadow-color : hsl(217, 54%, 8%);
-  --card-bg-color : hsl(216, 50%, 16%);
   
-  --soft-blue :  hsl(215, 51%, 70%);
+  
+  
   --cyan : hsl(178, 100%, 50%);
   --line-color :  hsl(215, 32%, 27%);
   --base-font-sz : 18px;
@@ -32,6 +34,7 @@
 .light{
   --bg-color : #ffffff;
   --text-primary : #424242;
+  --text-secondary : #757575;
 }
 
 body{

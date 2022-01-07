@@ -25,4 +25,5 @@ export interface ContextType {
   filterOptions: FilterOptions;
   setFilterOptions: React.Dispatch<React.SetStateAction<FilterOptions>> | null;
   favoriteBanks: Bank[] | null;
+  toggleFavoriteBank: (bank: Bank) => void;
 }

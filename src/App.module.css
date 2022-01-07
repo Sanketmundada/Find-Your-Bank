@@ -1,7 +1,6 @@
 .wrapper{
     max-width: 65rem;
     display: flex;
-    margin-inline:auto;
+    margin:auto;
     padding: 15px 6px;
-    background-color: coral;
 }
