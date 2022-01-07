@@ -20,8 +20,8 @@ export const CITY_LIST = [
     value: "BANGALORE",
   },
   {
-    label: "Hyderabad",
-    value: "HYDERABAD",
+    label: "Jaipur",
+    value: "JAIPUR",
   },
   {
     label: "Chennai",
