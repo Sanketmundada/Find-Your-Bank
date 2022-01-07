@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TableRow } from ".";
-import { Pagination, Filter } from "..";
+import { Pagination, Filter, NoDataFound } from "..";
 import { Bank } from "../../types";
 import styles from "./Table.module.css";
 import { TableHeader } from "./TableHeader";
@@ -29,15 +29,19 @@ export const Table: React.FC<Props> = ({
       <table className={styles.table}>
         <TableHeader />
         <tbody className={styles.tablebody}>
-          {pagination
-            ? data
-                ?.slice(curr_page * per_page, curr_page * per_page + per_page)
-                .map((bank, index) => {
-                  return <TableRow key={index} data={bank} />;
-                })
-            : data?.map((bank, index) => {
+          {!data || data?.length === 0 ? (
+            <NoDataFound />
+          ) : pagination ? (
+            data
+              ?.slice(curr_page * per_page, curr_page * per_page + per_page)
+              .map((bank, index) => {
                 return <TableRow key={index} data={bank} />;
-              })}
+              })
+          ) : (
+            data?.map((bank, index) => {
+              return <TableRow key={index} data={bank} />;
+            })
+          )}
         </tbody>
       </table>
       {pagination ? (

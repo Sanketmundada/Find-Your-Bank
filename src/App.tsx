@@ -4,6 +4,7 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import { Slide, ToastContainer } from "react-toastify";
 import styles from "./App.module.css";
 import { Navbar, Sidebar } from "./components";
 import AppProvider from "./context";
@@ -26,6 +27,13 @@ function App() {
           </Switch>
         </div>
       </Router>
+      <ToastContainer
+        autoClose={1500}
+        hideProgressBar={true}
+        closeOnClick
+        transition={Slide}
+        toastClassName={styles.toast}
+      />
     </AppProvider>
   );
 }

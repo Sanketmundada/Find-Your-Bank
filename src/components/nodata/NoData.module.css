@@ -1,0 +1,19 @@
+.wrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.image{
+    width: 150px;
+    height: 150px;
+}
+
+.text{
+    font-size: 22px;
+    margin-top: 15px;
+    font-weight: 600;
+    color:var(--text-primary);
+}

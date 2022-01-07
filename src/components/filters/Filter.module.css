@@ -4,4 +4,21 @@
     justify-content: flex-end;
     align-items: center;
     padding: 15px 5px;
+    margin-bottom: 5px;
+}
+
+.searchBar{
+    padding: 9px 5px;
+    border-radius: 3px;
+    font-size: 14px;
+    border: 1px solid var(--line-color);
+    background-color: transparent;
+    color: var(--text-primary);
+    margin-left: 10px;
+}
+.searchBar:focus{
+    outline: 1px solid var(--primary);
+}
+.searchBar::placeholder{
+    color: var(--text-secondary);
 }

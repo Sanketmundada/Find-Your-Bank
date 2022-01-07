@@ -1,22 +1,33 @@
 .sidebar{
     min-width: max-content;
-    padding: 0 10px;
+    padding: 0 20px;
+    padding-left: 0px;
 }
 .navDivs{
-    padding: 8px 5px;
-    margin: 5px 0;
+    padding: 11px 8px;
+    margin: 8px 0;
+    transition: all 0.25s ease-in;
+    border-radius: 5px;
 }
 
 .navDivs:hover{
+    background-color: var(--hover-color);
+   
+}
+.navDivs:hover .navLinks{
+    color:var(--text-secondary);
 }
 
 .navLinks{
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 400;
     display: flex;
     align-items: center;
+    color: var(--text-primary);
 }
 
+
+
 .navLinks > p{
-    margin-left: 4px;
+    margin-left: 6px;
 }

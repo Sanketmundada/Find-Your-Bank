@@ -11,30 +11,39 @@
 }
 :root{
   --bg-color:#ffffff;
-  --text-primary : #424242;
-  --text-secondary : #757575;
-
+  --primary : #1DA1F2;
+  --text-primary : #14171A;
+  --text-secondary : #657786;
+  --hover-color:#E1E8ED;
+  --box-shadow:rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  --card-color :#fdfdfd;
+  --scroll-color: #ffffffc7;
+  --line-color:#e0e0e0e0;
+  --dropdown-shadow :rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-
 .dark{
   --bg-color : #0d192b;
-  --card-bg-color : hsl(216, 50%, 16%);
   --text-primary : #ffffff;
   --text-secondary :  #8bacda;
-
-  --shadow-color : hsl(217, 54%, 8%);
-  
-  
-  
-  --cyan : hsl(178, 100%, 50%);
-  --line-color :  hsl(215, 32%, 27%);
-  --base-font-sz : 18px;
+  --hover-color:#0c1a2c;
+  --card-color : #14253d;
+  --shadow-color : #09121f;
+  --scroll-color :  #2f415b;
+  --line-color:#293950;
+  --box-shadow:-3px 7px 15px var(--shadow-color), 3px 5px 15px var(--shadow-color),1px 3px 15px var(--shadow-color);
+  --dropdown-shadow :#09121f 0px 2px 8px 0px;
 }
 
 .light{
   --bg-color : #ffffff;
   --text-primary : #424242;
   --text-secondary : #757575;
+  --hover-color:#e6e6e6ea;
+  --box-shadow:rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  --card-color :#fdfdfd;
+  --scroll-color: #ffffffc7;
+  --line-color:#e0e0e0e0;
+  --dropdown-shadow :rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 body{
@@ -47,4 +56,31 @@ select,
 button,
 textarea{
   font-family: inherit;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--scroll-color);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--hover-color);
+  border-radius: 100px;
 }

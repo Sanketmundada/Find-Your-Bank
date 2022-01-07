@@ -3,10 +3,17 @@ import { BASE_URL, CITY_LIST } from ".";
 import { Bank } from "../types";
 
 /* Function to fetch All the Banks */
-// TODO =>  Caching
+/* Caching Done using LocalStorage */
 export const fetchBanks = async () => {
-  const banks: Bank[] = [];
+  let banks: Bank[] = [];
 
+  if (localStorage.getItem("cached_data")) {
+    let data = JSON.parse(localStorage.getItem("cached_data")!);
+    if (Date.now() - data.createdAt < 5 * 60 * 1000) {
+      banks = data.banks;
+      return banks;
+    }
+  }
   await Promise.all(
     CITY_LIST.map(async (city) => {
       try {
@@ -22,6 +29,14 @@ export const fetchBanks = async () => {
       } catch (error) {
         throw error;
       }
+    }),
+  );
+
+  localStorage.setItem(
+    "cached_data",
+    JSON.stringify({
+      banks: banks,
+      createdAt: Date.now(),
     }),
   );
 

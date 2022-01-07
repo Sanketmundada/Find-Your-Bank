@@ -3,7 +3,8 @@
 }
 
 .navbarLinks{
-    max-width: 65rem;
+    max-width: 70rem;
+    width: 100%;
     display: flex;
     padding: 15px 6px;
     list-style: none;
@@ -15,5 +16,21 @@
 .logo{
     font-size: 1.5rem;
     font-weight: 700;
-    color : var(--text-primary)
+    color : var(--primary)
 }
+
+.toggle{
+    display: flex;
+    align-items: center;
+}
+.toggleLabel{
+    margin: 0 8px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.toggleButton{
+    padding: 1px;
+}
+

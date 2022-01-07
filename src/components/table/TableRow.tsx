@@ -46,7 +46,7 @@ export const TableRow: React.FC<Props> = ({ data }) => {
         >
           <MdOutlineFavorite
             size={20}
-            color={data.favorite ? "yellow" : "gray"}
+            color={data.favorite ? "#1DA1F2" : "lightgray"}
           />
         </div>
       </td>

@@ -3,5 +3,38 @@
     align-items: center;
     justify-content: flex-end;
     width: 100%;
-    padding: 15px 5px;
+    padding: 20px 5px;
+    margin-top: 5px;
+}
+.controls{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.displayInfo{
+    margin:0 3px;
+    color:var(--text-primary);
+}
+
+.paginationInput{
+    display: flex;
+    margin: 0 15px;
+}
+
+.paginationInput >p{
+    color:var(--text-secondary);
+    font-size: 14px;
+    margin-right: 3px;
+}
+.paginationInput > input{
+    background-color: transparent;
+    border-radius: 2px;
+    outline: 0px;
+    padding: 2px 5px;
+    border: 1px solid var(--primary);
+    width: 50px;
+    text-align: center;
+    color: var(--text-primary);
 }

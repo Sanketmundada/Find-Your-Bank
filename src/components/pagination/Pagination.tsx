@@ -1,13 +1,13 @@
+import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
 import styles from "./Pagination.module.css";
-
-type Pagination = {
+type PaginationState = {
   per_page: number;
   curr_page: number;
 };
 
 interface Props {
-  paginationState: Pagination;
-  setPaginationState: React.Dispatch<React.SetStateAction<Pagination>>;
+  paginationState: PaginationState;
+  setPaginationState: React.Dispatch<React.SetStateAction<PaginationState>>;
   datasize: number | undefined;
 }
 
@@ -25,11 +25,7 @@ const Pagination: React.FC<Props> = ({
     });
   };
 
-  const handleCurrentPageChange = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    type: "previous" | "next",
-  ) => {
-    e.preventDefault();
+  const handleCurrentPageChange = (type: "previous" | "next") => {
     setPaginationState((prev) => {
       return {
         ...prev,
@@ -49,26 +45,36 @@ const Pagination: React.FC<Props> = ({
 
   return (
     <div className={styles.paginationWrapper}>
-      Pagination {datasize!}
-      <input type="number" onChange={handleChangeRows} />
-      <div>
-        {`${from} - ${to} of ${datasize}`}
-        <button
-          onClick={(e) => {
-            handleCurrentPageChange(e, "previous");
+      <div className={styles.paginationInput}>
+        <p>Rows per Page</p>
+        <input
+          value={paginationState.per_page.toString()}
+          type="number"
+          onChange={handleChangeRows}
+        />
+      </div>
+      <div className={styles.controls}>
+        <BsCaretLeftFill
+          onClick={() => {
+            handleCurrentPageChange("previous");
           }}
-          disabled={from === 1}
-        >
-          Previous
-        </button>
-        <button
-          onClick={(e) => {
-            handleCurrentPageChange(e, "next");
+          style={{
+            color: "var(--text-secondary)",
+            cursor: from === 1 ? "not-allowed" : "pointer",
+            opacity: from === 1 ? 0.4 : 1,
           }}
-          disabled={to === datasize}
-        >
-          Next
-        </button>
+        />
+        <p className={styles.displayInfo}>{`${from} - ${to} of ${datasize}`}</p>
+        <BsCaretRightFill
+          onClick={() => {
+            handleCurrentPageChange("next");
+          }}
+          style={{
+            color: "var(--text-secondary)",
+            cursor: to === datasize ? "not-allowed" : "pointer",
+            opacity: to === datasize ? 0.4 : 1,
+          }}
+        />
       </div>
     </div>
   );

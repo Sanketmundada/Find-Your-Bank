@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MdFavorite } from "react-icons/md";
 import { AiTwotoneBank } from "react-icons/ai";
 import styles from "./Sidebar.module.css";
@@ -16,12 +16,19 @@ const sideOptions = [
   },
 ];
 const Sidebar = () => {
+  const location = useLocation();
   return (
     <div className={styles.sidebar}>
       {sideOptions.map((item, index) => {
         return (
           <div key={index} className={styles.navDivs}>
-            <Link to={item.link} className={styles.navLinks}>
+            <Link
+              to={item.link}
+              className={styles.navLinks}
+              style={{
+                color: item.link === location.pathname ? "#2ba8f5cb" : "",
+              }}
+            >
               {item.icon()}
               <p>{item.name}</p>
             </Link>

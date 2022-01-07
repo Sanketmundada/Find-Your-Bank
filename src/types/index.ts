@@ -26,4 +26,5 @@ export interface ContextType {
   setFilterOptions: React.Dispatch<React.SetStateAction<FilterOptions>> | null;
   favoriteBanks: Bank[] | null;
   toggleFavoriteBank: (bank: Bank) => void;
+  loading: boolean;
 }

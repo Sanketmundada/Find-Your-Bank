@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useDidUpdate } from "../hooks";
 import { Bank, ContextType, FilterOptions } from "../types";
 import { fetchBanks } from "../utils";
@@ -14,6 +15,7 @@ export const AppContext = createContext<ContextType>({
   setFilterOptions: null,
   favoriteBanks: null,
   toggleFavoriteBank: () => {},
+  loading: false,
 });
 
 const AppProvider: React.FC = ({ children }) => {
@@ -30,14 +32,22 @@ const AppProvider: React.FC = ({ children }) => {
     selected_city: null,
   });
 
+  const [loading, setLoading] = useState(false);
+
   const { category, search_query, selected_city } = filterOptions;
 
   useEffect(() => {
     // Fetching all the banks
     (async () => {
-      const banks = await fetchBanks();
-      setBanks(banks);
-      setFilteredBanks(banks);
+      setLoading(true);
+      try {
+        const banks = await fetchBanks();
+        setBanks(banks);
+        setFilteredBanks(banks);
+      } catch (error) {
+      } finally {
+        setLoading(false);
+      }
     })();
   }, []);
 
@@ -78,7 +88,8 @@ const AppProvider: React.FC = ({ children }) => {
       });
       return arr!;
     });
-    if (!bank.favorite)
+
+    if (!bank.favorite) {
       setFavorites((previous_banks) => {
         if (previous_banks)
           return [...previous_banks!, { ...bank, favorite: !bank.favorite }];
@@ -86,13 +97,15 @@ const AppProvider: React.FC = ({ children }) => {
           return [{ ...bank, favorite: !bank.favorite }];
         }
       });
-    else {
+      toast("Bank Added to favorites");
+    } else {
       setFavorites((previous_banks) => {
         let arr = previous_banks?.filter(
           (pre_bank) => pre_bank.ifsc !== bank.ifsc,
         );
         return arr!;
       });
+      toast("Bank Removed from favorites");
     }
   };
 
@@ -105,6 +118,7 @@ const AppProvider: React.FC = ({ children }) => {
         setFilterOptions,
         favoriteBanks: favorites,
         toggleFavoriteBank: toggleFavoriteBank,
+        loading: loading,
       }}
     >
       {children}

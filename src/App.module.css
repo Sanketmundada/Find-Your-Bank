@@ -1,6 +1,11 @@
 .wrapper{
-    max-width: 65rem;
+    max-width: 70rem;
+    min-width: 350px;
     display: flex;
     margin:auto;
     padding: 15px 6px;
+}
+.toast{
+    background-color: var(--card-color) !important;
+    color: var(--text-primary) !important;
 }

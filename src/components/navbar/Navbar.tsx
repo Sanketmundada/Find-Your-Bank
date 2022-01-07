@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Theme } from "../../types";
 import styles from "./Navbar.module.css";
+import Switch from "react-switch";
+
 const Navbar: React.FC = () => {
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage.getItem("theme") as Theme) || "light",
@@ -32,7 +34,24 @@ const Navbar: React.FC = () => {
           <p className={styles.logo}>Find Your Bank</p>
         </li>
         <li>
-          <div onClick={handleThemeChange}>Mode Toggle</div>
+          <div className={styles.toggle}>
+            <span className={styles.toggleLabel}>Light</span>
+            <Switch
+              checked={theme === "dark"}
+              onChange={() => {
+                handleThemeChange();
+              }}
+              onColor="#1DA1F2"
+              onHandleColor="#E1E8ED"
+              // handleDiameter={22}
+              uncheckedIcon={false}
+              checkedIcon={false}
+              height={26}
+              width={60}
+              className={styles.toggleButton}
+            />
+            <span className={styles.toggleLabel}>Dark</span>
+          </div>
         </li>
       </ul>
     </nav>
