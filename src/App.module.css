@@ -1,6 +1,6 @@
 .wrapper{
     max-width: 70rem;
-    min-width: 350px;
+    min-width: 500px;
     display: flex;
     margin:auto;
     padding: 15px 6px;
@@ -8,4 +8,11 @@
 .toast{
     background-color: var(--card-color) !important;
     color: var(--text-primary) !important;
+}
+
+@media (max-width:576px) {
+    .wrapper{
+        width: 600px;
+    }
+    
 }
