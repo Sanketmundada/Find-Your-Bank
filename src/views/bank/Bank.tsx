@@ -44,7 +44,7 @@ const Bank = () => {
           </div>
           <div>
             <span>Address : </span>
-            {bank?.address}
+            <p style={{ marginTop: "5px" }}>{bank?.address}</p>
           </div>
         </div>
         <div className={styles.cardFooter}>

@@ -35,7 +35,13 @@
     padding: 20px 0;
 }
 
-.cardBody,
+.cardBody{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    gap:20px;
+}
+
 .cardFooter{
     display: flex;
     justify-content: space-between;

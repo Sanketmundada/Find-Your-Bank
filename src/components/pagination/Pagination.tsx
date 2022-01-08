@@ -39,14 +39,20 @@ const Pagination: React.FC<Props> = ({
       return {
         ...prev,
         curr_page:
-          type === "previous" ? prev.curr_page - 1 : prev.curr_page + 1,
+          type === "previous"
+            ? prev.curr_page - 1 >= 0
+              ? prev.curr_page - 1
+              : 0
+            : prev.curr_page + 1 < datasize! / per_page - 1
+            ? prev.curr_page + 1
+            : datasize! / per_page - 1,
       };
     });
   };
 
   const { curr_page, per_page } = paginationState;
 
-  let from = curr_page * per_page + 1;
+  let from = per_page > 0 ? curr_page * per_page + 1 : curr_page * per_page;
   let to =
     curr_page * per_page + per_page > datasize!
       ? datasize
