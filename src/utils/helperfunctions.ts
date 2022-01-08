@@ -14,6 +14,8 @@ export const fetchBanks = async () => {
       return banks;
     }
   }
+
+  localStorage.removeItem("cached_data");
   await Promise.all(
     CITY_LIST.map(async (city) => {
       try {
