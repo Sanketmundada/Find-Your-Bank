@@ -1,4 +1,5 @@
 import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
+import { toast } from "react-toastify";
 import styles from "./Pagination.module.css";
 type PaginationState = {
   per_page: number;
@@ -17,10 +18,18 @@ const Pagination: React.FC<Props> = ({
   datasize,
 }) => {
   const handleChangeRows = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let val = Number(e.target.value);
+
+    if (val > 1000) {
+      // Handling Pagination Error
+      toast(`Max limit of rows per page exceeded ( Max limit is 1000 )`);
+      val = 1000;
+    }
+
     setPaginationState((prev) => {
       return {
         ...prev,
-        per_page: Number(e.target.value),
+        per_page: val,
       };
     });
   };
@@ -45,37 +54,44 @@ const Pagination: React.FC<Props> = ({
 
   return (
     <div className={styles.paginationWrapper}>
-      <div className={styles.paginationInput}>
-        <p>Rows per Page</p>
-        <input
-          value={paginationState.per_page.toString()}
-          type="number"
-          onChange={handleChangeRows}
-        />
-      </div>
-      <div className={styles.controls}>
-        <BsCaretLeftFill
-          onClick={() => {
-            handleCurrentPageChange("previous");
-          }}
-          style={{
-            color: "var(--text-secondary)",
-            cursor: from === 1 ? "not-allowed" : "pointer",
-            opacity: from === 1 ? 0.4 : 1,
-          }}
-        />
-        <p className={styles.displayInfo}>{`${from} - ${to} of ${datasize}`}</p>
-        <BsCaretRightFill
-          onClick={() => {
-            handleCurrentPageChange("next");
-          }}
-          style={{
-            color: "var(--text-secondary)",
-            cursor: to === datasize ? "not-allowed" : "pointer",
-            opacity: to === datasize ? 0.4 : 1,
-          }}
-        />
-      </div>
+      {datasize !== 0 ? (
+        <>
+          {" "}
+          <div className={styles.paginationInput}>
+            <p>Rows per Page</p>
+            <input
+              value={paginationState.per_page.toString()}
+              type="number"
+              onChange={handleChangeRows}
+            />
+          </div>
+          <div className={styles.controls}>
+            <BsCaretLeftFill
+              onClick={() => {
+                handleCurrentPageChange("previous");
+              }}
+              style={{
+                color: "var(--text-secondary)",
+                cursor: from === 1 ? "not-allowed" : "pointer",
+                opacity: from === 1 ? 0.4 : 1,
+              }}
+            />
+            <p
+              className={styles.displayInfo}
+            >{`${from} - ${to} of ${datasize}`}</p>
+            <BsCaretRightFill
+              onClick={() => {
+                handleCurrentPageChange("next");
+              }}
+              style={{
+                color: "var(--text-secondary)",
+                cursor: to === datasize ? "not-allowed" : "pointer",
+                opacity: to === datasize ? 0.4 : 1,
+              }}
+            />
+          </div>
+        </>
+      ) : null}
     </div>
   );
 };

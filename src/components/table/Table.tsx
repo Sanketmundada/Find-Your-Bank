@@ -30,7 +30,11 @@ export const Table: React.FC<Props> = ({
         <TableHeader />
         <tbody className={styles.tablebody}>
           {!data || data?.length === 0 ? (
-            <NoDataFound />
+            <tr className={styles.wrapper}>
+              <td>
+                <NoDataFound />
+              </td>
+            </tr>
           ) : pagination ? (
             data
               ?.slice(curr_page * per_page, curr_page * per_page + per_page)

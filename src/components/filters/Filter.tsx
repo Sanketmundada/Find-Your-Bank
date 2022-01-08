@@ -23,6 +23,7 @@ const style: StylesConfig = {
     border: state.isFocused
       ? "1px solid var(--hover-color)"
       : "1px solid var(--line-color)",
+    cursor: "pointer",
   }),
   menu: (styles: any, state) => ({
     ...styles,
@@ -30,6 +31,7 @@ const style: StylesConfig = {
     fontSize: "14px",
     boxShadow: "var(--dropdown-shadow)",
     color: "var(--text-secondary)",
+    cursor: "pointer",
   }),
   option: (styles: any) => ({
     ...styles,

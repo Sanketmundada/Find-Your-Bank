@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Theme } from "../../types";
 import styles from "./Navbar.module.css";
 import Switch from "react-switch";
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [theme, setTheme] = useState<Theme>(
@@ -31,7 +32,11 @@ const Navbar: React.FC = () => {
     <nav className={styles.navbar}>
       <ul className={styles.navbarLinks}>
         <li>
-          <p className={styles.logo}>Find Your Bank</p>
+          <p className={styles.logo}>
+            <Link className={styles.link} to="/allbanks">
+              Find Your Bank
+            </Link>
+          </p>
         </li>
         <li>
           <div className={styles.toggle}>

@@ -45,6 +45,7 @@ const AppProvider: React.FC = ({ children }) => {
         setBanks(banks);
         setFilteredBanks(banks);
       } catch (error) {
+        toast("Error In Fetching Banks");
       } finally {
         setLoading(false);
       }
