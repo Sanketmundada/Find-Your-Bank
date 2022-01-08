@@ -35,17 +35,23 @@ const Pagination: React.FC<Props> = ({
   };
 
   const handleCurrentPageChange = (type: "previous" | "next") => {
+    if (type === "previous") {
+      if (from <= 1) {
+        return;
+      }
+    }
+
+    if (type === "next") {
+      if (to! >= datasize!) {
+        return;
+      }
+    }
+
     setPaginationState((prev) => {
       return {
         ...prev,
         curr_page:
-          type === "previous"
-            ? prev.curr_page - 1 >= 0
-              ? prev.curr_page - 1
-              : 0
-            : prev.curr_page + 1 < datasize! / per_page - 1
-            ? prev.curr_page + 1
-            : datasize! / per_page - 1,
+          type === "previous" ? prev.curr_page - 1 : prev.curr_page + 1,
       };
     });
   };
@@ -57,6 +63,16 @@ const Pagination: React.FC<Props> = ({
     curr_page * per_page + per_page > datasize!
       ? datasize
       : curr_page * per_page + per_page;
+
+  /* Handling pagination Edge case */
+  if (from > datasize!) {
+    setPaginationState((prev) => {
+      return {
+        ...prev,
+        curr_page: 0,
+      };
+    });
+  }
 
   return (
     <div className={styles.paginationWrapper}>
