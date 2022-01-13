@@ -65,14 +65,14 @@ const Pagination: React.FC<Props> = ({
       : curr_page * per_page + per_page;
 
   /* Handling pagination Edge case */
-  if (from > datasize!) {
-    setPaginationState((prev) => {
-      return {
-        ...prev,
-        curr_page: 0,
-      };
-    });
-  }
+//   if (from > datasize!) {
+//     setPaginationState((prev) => {
+//       return {
+//         ...prev,
+//         curr_page: 0,
+//       };
+//     });
+//   }
 
   return (
     <div className={styles.paginationWrapper}>
